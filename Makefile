@@ -1,4 +1,4 @@
-TEX = test.tex
+TEX = cv.tex
 
 all: pdf docx
 
