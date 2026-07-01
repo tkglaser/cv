@@ -1,13 +1,18 @@
+TEX = test.tex
+
 all: pdf docx
 
 pdf:
-	latexmk
+	latexmk $(TEX)
 
 docx: pdf
-	pandoc cv.tex -o dist/cv.docx
+	pandoc $(TEX) -o dist/cv.docx
+
+watch:
+	latexmk -pvc -e '$$success_cmd = "pandoc $(TEX) -o dist/cv.docx"' $(TEX)
 
 clean:
-	latexmk -c
+	latexmk -c $(TEX)
 	rm -f dist/cv.docx
 
-.PHONY: all pdf docx clean
+.PHONY: all pdf docx watch clean

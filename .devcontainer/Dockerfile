@@ -1,26 +1,32 @@
-# FROM danteev/texlive
+FROM mcr.microsoft.com/devcontainers/base:ubuntu26.04
 
-# # Install tools
-# RUN pip install arxiv-latex-cleaner==0.1.* pdflinkchecker-cli==0.2.* --break-system-packages
-
-# Installs Xelatex and all Google Web Fonts. A curated selection of the finest
-# open fonts.
-
-FROM ubuntu:resolute
-
-WORKDIR /var/local
-
-# combine into one run command to reduce image size
-RUN apt-get update && apt-get install -y perl wget curl libfontconfig1 git pandoc make && \
-    wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh  && \
+RUN apt-get update && apt-get install -y perl wget curl libfontconfig1 fontconfig git pandoc make && \
     apt-get clean
-RUN curl -fsSL https://claude.ai/install.sh | bash
-ENV PATH="${PATH}:/root/bin:/root/.local/bin"
-RUN tlmgr install xetex
-RUN fmtutil-sys --all
 
-# install only the packages you need
-# this is the bit which fails for most other methods of installation
+# Install TinyTeX as the non-root "vscode" user (the devcontainer's runtime
+# user) so its ~/.TinyTeX install dir is owned by and reachable by that user
+# directly, without needing sudo for every latexmk/xelatex/tlmgr invocation.
+USER vscode
+
+RUN wget -qO- "https://yihui.name/gh/tinytex/tools/install-unx.sh" | sh
+
+ENV PATH="${PATH}:/home/vscode/bin"
+
 RUN tlmgr install xcolor pgf fancyhdr parskip babel-english units lastpage \
-    mdwtools comment fontawesome libertine mathtools enumitem titlesec adjustbox
-# genmisc
+    mdwtools comment fontawesome fontawesome6 libertine mathtools enumitem \
+    titlesec adjustbox moderncv qrcode tikzmark amsmath \
+    lm lm-math unicode-math
+
+USER root
+
+# Make TinyTeX fonts visible to fontconfig (needed by XeTeX for font-by-name lookup)
+# TinyTeX doesn't ship texlive-fontconfig.conf, so write one manually.
+RUN printf '<?xml version="1.0"?>\n<!DOCTYPE fontconfig SYSTEM "fonts.dtd">\n<fontconfig>\n  <dir>/home/vscode/.TinyTeX/texmf-dist/fonts/opentype</dir>\n  <dir>/home/vscode/.TinyTeX/texmf-dist/fonts/truetype</dir>\n  <dir>/home/vscode/.TinyTeX/texmf-dist/fonts/type1</dir>\n</fontconfig>\n' > /etc/fonts/conf.d/09-texlive-fonts.conf && \
+    fc-cache -fsv
+
+USER vscode
+
+# Install Claude Code as vscode too, for the same reason as TinyTeX above:
+# the installer drops its binary/config under $HOME, which needs to be
+# vscode's home for the CLI to be usable without sudo.
+RUN curl -fsSL https://claude.ai/install.sh | bash
