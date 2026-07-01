@@ -15,7 +15,8 @@ ENV PATH="${PATH}:/home/vscode/bin"
 RUN tlmgr install xcolor pgf fancyhdr parskip babel-english units lastpage \
     mdwtools comment fontawesome fontawesome6 libertine mathtools enumitem \
     titlesec adjustbox moderncv qrcode tikzmark amsmath \
-    lm lm-math unicode-math
+    lm lm-math unicode-math chktex && \
+    tlmgr path add
 
 USER root
 
