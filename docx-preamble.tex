@@ -1,0 +1,34 @@
+% Plain-LaTeX substitute definitions for the moderncv commands used in cv.tex.
+% pandoc's LaTeX reader doesn't know moderncv.cls, so cventry/cvitem/etc. are
+% silently dropped when converting cv.tex straight to docx. This preamble is
+% prepended (via the Makefile's docx target) ahead of cv.tex's body so pandoc
+% expands those commands into plain text/paragraphs instead.
+\documentclass{article}
+\usepackage[hmargin=1in,vmargin=1in]{geometry}
+
+\newcommand{\Csharp}{C\#}
+
+\newcommand{\name}[2]{\def\cvname{#1~#2}}
+\renewcommand{\title}[1]{\def\cvtitle{#1}}
+\newcommand{\phone}[2][]{\def\cvphone{#2}}
+\newcommand{\email}[1]{\def\cvemail{#1}}
+\newcommand{\social}[2][]{\def\cvsocial{#1: #2}}
+\newcommand{\makecvtitle}{%
+  \begin{center}
+  {\Large\textbf{\cvname}}\par
+  \cvtitle\par
+  \cvphone\ $\vert$\ \cvemail\ $\vert$\ \cvsocial
+  \end{center}
+  \par\bigskip
+}
+
+\newcommand{\cvitem}[2]{\par\noindent\textbf{#1}\ #2\par}
+\newcommand{\cventry}[6]{\par\noindent\textbf{#2}, #3 --- #4 (#1)\par#6\par}
+\newcommand{\cvitemwithcomment}[3]{\par\noindent\textbf{#1}: #2 --- #3\par}
+
+% \cvskillentry* is rewritten to \cvskillentrystar by the Makefile before
+% reaching pandoc, since pandoc's macro expander doesn't support star variants.
+\newcommand{\cvskillentry}[5]{#1\ #3 (#4 yrs) --- #5\par}
+\newcommand{\cvskillentrystar}[5]{\par\noindent\textbf{#1} #3 (#4 yrs) --- #5\par}
+\newcommand{\cvskilllegendstar}[2][]{}
+\newcommand{\cvskillhead}[1][]{}
