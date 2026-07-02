@@ -52,11 +52,16 @@
 % document language
 \usepackage[english]{babel}  % FIXME: using spanish breaks moderncv
 
+\usepackage{graphicx}
+\newcommand{\Csharp}{%
+  {\settoheight{\dimen0}{C}C\kern-.05em \resizebox{!}{\dimen0}{\raisebox{\depth}{\#}}}}
+
+
 % personal data
 \name{Tom}{Glaser}
-\title{Senior Software Engineer}                   % optional, remove / comment the line if not wanted
-\born{24 March 1977}                                % optional, remove / comment the line if not wanted
-\address{Apt 35 Marigold House, 1 Wallingford Way, Maidenhead}{SL6 1GG} % optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
+\title{Senior Software Engineer \& Architect}       % optional, remove / comment the line if not wanted
+%\born{24 March 1977}                                % optional, remove / comment the line if not wanted
+%\address{Apt 35 Marigold House, 1 Wallingford Way, Maidenhead}{SL6 1GG} % optional, remove / comment the line if not wanted; the "postcode city" and "country" arguments can be omitted or provided empty
 \phone[mobile]{+44~7480~503~505}                   % optional, remove / comment the line if not wanted; the optional "type" of the phone can be "mobile" (default), "fixed" or "fax"
 %\phone[fixed]{+2~(345)~678~901}
 %\phone[fax]{+3~(456)~789~012}
@@ -134,65 +139,11 @@
 \makecvtitle
 
 \section[\faIcon{user}]{Summary}
-\cvitem{}{I'm passionate about applying technology to solve real-world problems and guiding a business to success.}
-\cvitem{}{My 22-year experience as a Full Stack Software Engineer, Architect, Trainer and Team Lead gives me not only the deep and broad technical knowledge needed to create robust system designs but also the interpersonal skills to guide business stakeholders, build and manage a team and mentor developers as an ongoing process. I have been labeled as an excellent communicator and someone that is easy to work with.}
+\cvitem{}{Senior Software Engineer and Architect with 22 years' experience designing robust systems and leading engineering teams. I pair deep technical expertise with strong stakeholder engagement, mentoring developers and guiding business goals to successful delivery.}
 
 \section[\faIcon{gears}]{Skills}
 \cvitem{Professional}{Deep technical knowledge, Solution architecture \& implementation, Team leadership, engagement, conflict resolution, Communication and mentorship}
-\cvitem{Programming}{C\#, .NET, Typescript, React, AWS, SQL / NoSQL, etc.}
 
-\section[\faIcon{graduation-cap}]{Education}
-\cventry{1996--2003}{Diplom Informatiker (M.Sc.) in Computer Science and Mathematics}{Technische Universit\"at Ilmenau}{Ilmenau, Germany}{}{Awarded Oct.~2003}
-% \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 can be left empty
-
-% \section{Master thesis}
-% \cvitem{title}{\emph{Title}}
-% \cvitem{supervisors}{Supervisors}
-% \cvitem{description}{Short thesis abstract}
-
-% \section{Experience}
-% \subsection{Vocational}
-% \cventry{year--year}{Job title}{Employer}{City}{}{General description no longer than 1--2 lines.\newline{}
-% Detailed achievements:
-% \begin{itemize}
-% \item Achievement 1
-% \item Achievement 2 (with sub-achievements)
-%   \begin{itemize}
-%   \item Sub-achievement (a);
-%   \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
-%     \begin{itemize}
-%     \item Sub-sub-achievement i;
-%     \item Sub-sub-achievement ii;
-%     \item Sub-sub-achievement iii;
-%     \end{itemize}
-%   \item Sub-achievement (c);
-%   \end{itemize}
-% \item Achievement 3
-% \item Achievement 4
-% \end{itemize}}
-% \cventry{year--year}{Job title}{Employer}{City}{}{Description line 1\newline{}Description line 2\newline{}Description line 3}
-% \subsection{Miscellaneous}
-% \cventry{year--year}{Job title}{Employer}{City}{}{Description}
-
-\section[\faIcon{certificate}]{Certifications}
-\cvitem{Nov.~2024}{AWS Certified Developer - Associate --- \href{https://cp.certmetrics.com/amazon/en/public/verify/credential/04DJLNBL2JF11E3T}{Credential ID 04DJLNBL2JF11E3T}}
-\cvitem{Oct.~2020}{AWS Certified Solutions Architect - Associate (lapsed) --- \href{https://cp.certmetrics.com/amazon/en/public/verify/credential/NJQ3VMXLCFREQSC7}{Credential ID NJQ3VMXLCFREQSC7}}
-\cvitem{Mar.~2020}{Microsoft Certified: Azure Solutions Architect Expert (lapsed) --- \href{https://www.credly.com/badges/34e56244-39c6-4563-95a3-7e34fa88d23b/linked_in_profile}{Credential ID H394-0016}}
-
-% \section{Languages}
-% \cvitemwithcomment{Language 1}{Skill level}{Comment}
-% \cvitemwithcomment{Language 2}{Skill level}{Comment}
-% \cvitemwithcomment{Language 3}{Skill level}{Comment}
-% \cvitemwithcomment{Language 4}{Skill level}{Comment}
-
-% \section{Computer skills}
-% \cvdoubleitem{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
-% \cvdoubleitem{category 2}{XXX, YYY, ZZZ}{category 5}{XXX, YYY, ZZZ}
-% \cvdoubleitem{category 3}{XXX, YYY, ZZZ}{category 6}{XXX, YYY, ZZZ}
-% \cvtripleitem{category 4}{XYZ}{category 5}{XYZ}{category 6}{XYZ}
-
-\section[\faIcon{chart-bar}]{Skill matrix}
-% \cvitem{Skill matrix}{Alternatively, provide a skill matrix to show off your skills}
 % Skill matrix as an alternative to rate one's skills, computer or other.
 
 % Adjusts width of skill matrix columns.
@@ -237,15 +188,71 @@
 %% \cvskillentry[*][<post_padding>]{<skill_cathegory>}{<0-5>}{<skill_name>}{<years_of_experience>}{<comment>}%
 %% Example usages:
 \cvskillentry*{Languages:}{5}{TypeScript/nodejs}{11}{Frontend and backend, various frameworks}
-\cvskillentry{}{4}{C\#}{12}{Used in various projects in different companies}
-\cvskillentry{}{2}{Python}{2}{Basic experience, mainly with AI projects}
-\cvskillentry*{Language:}{3}{Python}{2}{I'm so experienced in Python and have realised a million projects. At least.}
-\cvskillentry{}{2}{Lilypond}{14}{So much sheet music! Man, I'm the best!}
-\cvskillentry{}{3}{\LaTeX}{14}{Clearly I rock at \LaTeX}
-\cvskillentry*{OS:}{3}{Linux}{2}{I only use Archlinux btw}% notice the use of the starred command and the optional
-\cvskillentry*[1em]{Methods}{4}{SCRUM}{8}{SCRUM master for 5 years}
+\cvskillentry{}{4}{\Csharp}{12}{Used in various projects in different companies}
+\cvskillentry{}{2}{Python}{2}{Basic hands-on experience; directed Python work as tech lead/architect on AI projects}
+\cvskillentry*{Cloud:}{5}{AWS}{5.5}{Worked for AWS as a Prototyping Engineer}
+\cvskillentry*{OS:}{4}{Linux}{10+}{I've used Linux professionally and privately}
+\cvskillentry{}{3}{Windows}{10+}{I've used Windows professionally and privately}
 %% \cvskill{<0-5>} command
 % \cvitem{\textbackslash{cvskill}:}{Skills can be visually expressed by the \textbackslash{cvskill} command, e.g. \cvskill{2}}
+
+\section[\faIcon{briefcase}]{Experience}
+% \subsection{Vocational}
+\cventry{2020--2026}{Senior Software Engineer (SDE III)}{Amazon Web Services (AWS)}{London}{}{Delivered rapid Proof-of-Concept solutions for Public Sector customers on the Envision Engineering team, helping them evaluate and adopt AWS cloud technology.\newline{}
+Highlights:
+\begin{itemize}
+\item Team Lead and Head Developer (team of 3) for an AI-powered classroom simulator prototype for Steplab, letting trainee teachers practise lesson delivery in a realistic simulated environment (Amazon Bedrock, TypeScript, \Csharp, Python)
+\item Team Lead and Head Developer (team of 3) for an AI project for the Swedish National Courts Administration (Domstolsverket) (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://computersweden.se/article/3614932/blivande-svenska-domare-tranas-med-ai-och-vr.html}{Press coverage: ``Sweden trains future judges with AI and VR''}
+\item Helped The Ocean Cleanup iterate on their predictive model for plastic density distribution across the Pacific Ocean, as part of a team of 4, a prototype which led to a wider AWS $\times$ The Ocean Cleanup partnership (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://theoceancleanup.com/press/press-releases/the-ocean-cleanup-and-aws-join-forces/}{Press coverage: ``The Ocean Cleanup and AWS Join Forces to Accelerate Ocean Plastic Removal using AI''}
+\item Built a medical knowledge categorisation system for the National Institute for Health and Care Excellence (NICE), as part of a team of 5, using Retrieval-Augmented Generation (Amazon OpenSearch Service, Amazon Neptune, Amazon Bedrock, TypeScript, \Csharp, Python)
+% \item Achievement 2 (with sub-achievements)
+%   \begin{itemize}
+%   \item Sub-achievement (a);
+%   \item Sub-achievement (b), with sub-sub-achievements (don't do this!);
+%     \begin{itemize}
+%     \item Sub-sub-achievement i;
+%     \item Sub-sub-achievement ii;
+%     \item Sub-sub-achievement iii;
+%     \end{itemize}
+%   \item Sub-achievement (c);
+%   \end{itemize}
+% \item Achievement 3
+% \item Achievement 4
+\end{itemize}
+}
+\cventry{2019--2020}{Senior Software Engineer (contract)}{McLaren Applied Technologies}{London}{}{Co-architected and co-developed multiple Angular+NodeJS+.NET Core applications.\newline{}Frameworks/Languages: Angular (v9), NodeJS, .NET Core, SignalR, RxJS (Reactive extensions for JS), NgRx (State manager), NestJS (API Framework for Node), Angular Schematics, TypeScript, \Csharp}
+\cventry{2018--2019}{Senior Software Engineer (contract)}{Invenias by Bullhorn}{Reading}{}{Re-architect and upgrade an existing Angular+.NET solution.\newline{}The requirements had outgrown the architectural capabilities of the current application, I suggested a new architecture using client-side state management and server-side push and outlined the migration path that enabled us to do the overhaul while continuing to add features to the software.}
+\cventry{2017--2018}{Senior Software Engineer (contract)}{Fiserv}{Slough}{}{Re-implementation of Risk Assessment Software in Angular 5.\newline{}Tools/Languages: \Csharp, WebAPI, Angular (v5), RxJS (Reactive extensions for JS), ngrx/store (State manager), Visual Studio 2015, Visual Studio Code, MS SQL Server.}
+\cventry{2015--2017}{Senior Software Engineer}{Knight Frank}{London}{}{Extending and updating Knight Frank's web presence.\newline{}Tools/Languages: \Csharp, ASP MVC, AngularJS, ASP WebApi, WebForms, Visual Studio 2015, MS SQL Server}
+\cventry{2014--2015}{Senior Software Engineer (contract)}{HM Informatik AG}{Remote}{}{Worked on the Flight Control Simulator (FCS) project.\newline{}Tools/Languages: C++, Boost, CMake, Qt 4.8, Visual Studio 2010, Bazaar. }
+\cventry{2011--2014}{Senior Software Engineer \& Architect}{Momentum Hub}{Maidenhead}{}{Architect, Head Developer.}
+\cventry{2010--2011}{Senior Software Engineer}{Symantec}{Reading}{}{R\&D Team, Enterprise Vault for Lotus Domino}
+\cventry{2006--2010}{Software Engineer \& Team Lead}{Ingres}{Slough}{}{Various customer projects, managing the full sw life cycle.}
+\cventry{2004--2006}{Software Engineer \& Team Lead}{Thinking Instruments AG}{Ilmenau, Germany}{}{Bespoke software projects for various customers.}
+
+\section[\faIcon{graduation-cap}]{Education}
+\cventry{1996--2003}{Diplom Informatiker (M.Sc.) in Computer Science and Mathematics}{Technische Universit\"at Ilmenau}{Ilmenau, Germany}{}{Awarded Oct.~2003}
+% \cventry{year--year}{Degree}{Institution}{City}{\textit{Grade}}{Description}  % arguments 3 to 6 can be left empty
+
+% \section{Master thesis}
+% \cvitem{title}{\emph{Title}}
+% \cvitem{supervisors}{Supervisors}
+% \cvitem{description}{Short thesis abstract}
+
+\section[\faIcon{certificate}]{Certifications}
+\cvitem{Nov.~2024}{AWS Certified Developer - Associate --- \href{https://cp.certmetrics.com/amazon/en/public/verify/credential/04DJLNBL2JF11E3T}{Credential ID 04DJLNBL2JF11E3T}}
+\cvitem{Oct.~2020}{AWS Certified Solutions Architect - Associate (lapsed) --- \href{https://cp.certmetrics.com/amazon/en/public/verify/credential/NJQ3VMXLCFREQSC7}{Credential ID NJQ3VMXLCFREQSC7}}
+\cvitem{Mar.~2020}{Microsoft Certified: Azure Solutions Architect Expert (lapsed) --- \href{https://www.credly.com/badges/34e56244-39c6-4563-95a3-7e34fa88d23b/linked_in_profile}{Credential ID H394-0016}}
+
+\section[\faIcon{language}]{Languages}
+\cvitemwithcomment{English}{Proficient}{I've lived and worked in the UK since 2008}
+\cvitemwithcomment{German}{Native}{I'm a native German speaker}
+
+% \section{Computer skills}
+% \cvdoubleitem{category 1}{XXX, YYY, ZZZ}{category 4}{XXX, YYY, ZZZ}
+% \cvdoubleitem{category 2}{XXX, YYY, ZZZ}{category 5}{XXX, YYY, ZZZ}
+% \cvdoubleitem{category 3}{XXX, YYY, ZZZ}{category 6}{XXX, YYY, ZZZ}
+% \cvtripleitem{category 4}{XYZ}{category 5}{XYZ}{category 6}{XYZ}
 
 % \section{Interests}
 % \cvitem{hobby 1}{Description}
