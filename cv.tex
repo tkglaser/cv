@@ -33,8 +33,16 @@
   \usepackage{fontspec}
   \usepackage{unicode-math}
   \defaultfontfeatures{Ligatures=TeX}
-  \setmainfont{Latin Modern Roman}
-  \setsansfont{Latin Modern Sans}
+  \setmainfont{lmroman10-regular.otf}[
+    Extension = .otf,
+    UprightFont = lmroman10-regular, BoldFont = lmroman10-bold,
+    ItalicFont = lmroman10-italic, BoldItalicFont = lmroman10-bolditalic,
+  ]
+  \setsansfont{lmsans10-regular.otf}[
+    Extension = .otf,
+    UprightFont = lmsans10-regular, BoldFont = lmsans10-bold,
+    ItalicFont = lmsans10-oblique, BoldItalicFont = lmsans10-boldoblique,
+  ]
   \setmonofont{Latin Modern Mono}
   \setmathfont{Latin Modern Math}
 
@@ -201,10 +209,13 @@
 \cventry{2020--2026}{Senior Software Engineer (SDE III)}{Amazon Web Services (AWS)}{London}{}{Delivered rapid Proof-of-Concept solutions for Public Sector customers on the Envision Engineering team, helping them evaluate and adopt AWS cloud technology.\newline{}
 Highlights:
 \begin{itemize}
-\item Team Lead and Head Developer (team of 3) for an AI-powered classroom simulator prototype for Steplab, letting trainee teachers practise lesson delivery in a realistic simulated environment (Amazon Bedrock, TypeScript, \Csharp, Python)
-\item Team Lead and Head Developer (team of 3) for an AI project for the Swedish National Courts Administration (Domstolsverket) (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://computersweden.se/article/3614932/blivande-svenska-domare-tranas-med-ai-och-vr.html}{Press coverage: ``Sweden trains future judges with AI and VR''}
-\item Helped The Ocean Cleanup iterate on their predictive model for plastic density distribution across the Pacific Ocean, as part of a team of 4, a prototype which led to a wider AWS $\times$ The Ocean Cleanup partnership (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://theoceancleanup.com/press/press-releases/the-ocean-cleanup-and-aws-join-forces/}{Press coverage: ``The Ocean Cleanup and AWS Join Forces to Accelerate Ocean Plastic Removal using AI''}
-\item Built a medical knowledge categorisation system for the National Institute for Health and Care Excellence (NICE), as part of a team of 5, using Retrieval-Augmented Generation (Amazon OpenSearch Service, Amazon Neptune, Amazon Bedrock, TypeScript, \Csharp, Python)
+  \item \textbf{Architected and led the ''0→1'' build of the Steplab AI simulator} using Amazon Bedrock to automate high-complexity prototyping scenarios, turning manual "heavy lifting" into repeatable, scalable cloud assets.
+  \item \textbf{Rapidly delivered production-ready AI PoCs} (RAG systems, medical knowledge categorization for NICE) that accelerated cloud adoption and informed broader platform feature roadmaps.
+  \item \textbf{Established AI-native engineering patterns} using Claude and custom agents to maintain 10x delivery velocity on greenfield projects.
+  % \item Team Lead and Head Developer (team of 3) for an AI-powered classroom simulator prototype for Steplab, letting trainee teachers practise lesson delivery in a realistic simulated environment (Amazon Bedrock, TypeScript, \Csharp, Python)
+  % \item Team Lead and Head Developer (team of 3) for an AI project for the Swedish National Courts Administration (Domstolsverket) (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://computersweden.se/article/3614932/blivande-svenska-domare-tranas-med-ai-och-vr.html}{Press coverage: ``Sweden trains future judges with AI and VR''}
+  % \item Helped The Ocean Cleanup iterate on their predictive model for plastic density distribution across the Pacific Ocean, as part of a team of 4, a prototype which led to a wider AWS $\times$ The Ocean Cleanup partnership (Amazon Bedrock, TypeScript, \Csharp, Python) --- \href{https://theoceancleanup.com/press/press-releases/the-ocean-cleanup-and-aws-join-forces/}{Press coverage: ``The Ocean Cleanup and AWS Join Forces to Accelerate Ocean Plastic Removal using AI''}
+  \item \textbf{Built a medical knowledge categorisation system for the National Institute for Health and Care Excellence (NICE)}, as part of a team of 5, using Retrieval-Augmented Generation (Amazon OpenSearch Service, Amazon Neptune, Amazon Bedrock, TypeScript, \Csharp, Python)
 % \item Achievement 2 (with sub-achievements)
 %   \begin{itemize}
 %   \item Sub-achievement (a);

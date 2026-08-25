@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/base:ubuntu26.04
 
-RUN apt-get update && apt-get install -y perl wget curl libfontconfig1 fontconfig git pandoc make && \
+RUN apt-get update && apt-get install -y perl wget curl libfontconfig1 fontconfig git make && \
     apt-get clean
 
 # Install TinyTeX as the non-root "vscode" user (the devcontainer's runtime

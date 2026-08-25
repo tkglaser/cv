@@ -6,15 +6,13 @@ A single-file LaTeX CV built with the [color-cv](https://github.com/Teddy-van-Je
 
 - A TeX distribution with XeLaTeX (e.g. TeX Live)
 - [latexmk](https://ctan.org/pkg/latexmk)
-- [pandoc](https://pandoc.org/) (for DOCX output)
 
 ## Usage
 
 ```bash
-make          # build PDF and DOCX
-make pdf      # build PDF only
-make docx     # build DOCX from the PDF
-make watch    # rebuild on save (PDF + DOCX)
+make          # build PDF
+make pdf      # build PDF
+make watch    # rebuild on save
 make clean    # remove build artifacts
 ```
 
